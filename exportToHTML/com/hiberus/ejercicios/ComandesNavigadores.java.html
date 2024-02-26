@@ -1,0 +1,746 @@
+<html>
+<head>
+<title>ComandesNavigadores.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ComandesNavigadores.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">hiberus</span><span class="s2">.</span><span class="s1">ejercicios</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">io</span><span class="s2">.</span><span class="s1">github</span><span class="s2">.</span><span class="s1">bonigarcia</span><span class="s2">.</span><span class="s1">wdm</span><span class="s2">.</span><span class="s1">WebDriverManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">After</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">Before</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebElement</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Select</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">WebDriverWait</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">NoSuchElementException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Random</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">concurrent</span><span class="s2">.</span><span class="s1">TimeUnit</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ComandesNavigadores </span><span class="s2">{</span>
+
+    <span class="s0">public static </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+
+    <span class="s0">public static </span><span class="s1">WebDriverWait wait</span><span class="s2">;</span>
+
+    <span class="s1">@Before</span>
+    <span class="s0">public void </span><span class="s1">setUp</span><span class="s2">() {</span>
+        <span class="s3">//Paso0</span>
+        <span class="s1">WebDriverManager</span><span class="s2">.</span><span class="s1">chromedriver</span><span class="s2">().</span><span class="s1">setup</span><span class="s2">(); </span><span class="s3">// Cargar Chromedriver</span>
+
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">deleteAllCookies</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">timeouts</span><span class="s2">().</span><span class="s1">implicitlyWait</span><span class="s2">(</span><span class="s4">5</span><span class="s2">, </span><span class="s1">TimeUnit</span><span class="s2">.</span><span class="s1">SECONDS</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+
+        <span class="s1">wait </span><span class="s2">= </span><span class="s0">new </span><span class="s1">WebDriverWait</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">500</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">login</span><span class="s2">()</span>
+
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com/&quot;</span><span class="s2">);</span>
+        <span class="s1">String url</span><span class="s2">=</span><span class="s5">&quot;https://www.saucedemo.com/inventory.html&quot;</span><span class="s2">;</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir la contraseña</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Hacer clic en el botón de login</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+       <span class="s1">String actualUrl</span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">getCurrentUrl</span><span class="s2">();</span>
+
+
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;url does not match&quot;</span><span class="s2">,</span><span class="s1">actualUrl</span><span class="s2">.</span><span class="s1">equalsIgnoreCase</span><span class="s2">(</span><span class="s1">url</span><span class="s2">));</span>
+        <span class="s3">//Assert.assertFalse(&quot;does match&quot;, actualUrl.equalsIgnoreCase(url));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;se ha muestrado correctamente&quot;</span><span class="s2">);</span>
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+
+    <span class="s0">public void </span><span class="s1">ErrorMessage</span><span class="s2">()</span>
+    <span class="s2">{</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com/&quot;</span><span class="s2">);</span>
+
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_use&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir la contraseña</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Hacer clic en el botón de login</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s3">// Validar que aparece el mensaje de error</span>
+        <span class="s1">WebElement errorMessage </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[@class='error-message-container error']&quot;</span><span class="s2">));</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">errorMessage</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">()) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Mensaje de error: &quot; </span><span class="s2">+ </span><span class="s1">errorMessage</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">());</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Test exitoso. Se encontró el mensaje de error.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Test fallido. No se encontró el mensaje de error.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+
+
+
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">ValidarNumeroDeResultados</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com/&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir el nombre de usuario</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir la contraseña</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Hacer clic en el botón de login</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s3">// int numProducts=0;</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">numProducts </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
+        <span class="s0">try </span><span class="s2">{</span>
+
+            <span class="s3">// Validar el número de productos mostrados</span>
+            <span class="s1">numProducts </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;inventory_item&quot;</span><span class="s2">));</span>
+
+
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">NoSuchElementException nsee</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;el element no existe&quot; </span><span class="s2">+ </span><span class="s1">nsee</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+
+            <span class="s3">// Cerrar el navegador</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;el resultado esperado es :6 y el resultado obtenido es:&quot; </span><span class="s2">+ </span><span class="s1">numProducts</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(), </span><span class="s4">6</span><span class="s2">, </span><span class="s1">numProducts</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El número de productos mostrados es igual a 6. Prueba pasada!&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+
+    <span class="s1">@Test</span>
+
+    <span class="s0">public void </span><span class="s1">existeElemento</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir el nombre de usuario</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir la contraseña</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Hacer clic en el botón de login</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s1">WebElement elemnt</span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[text()='Sauce Labs Bolt T-Shirt']&quot;</span><span class="s2">));</span>
+        <span class="s0">boolean </span><span class="s1">bool</span><span class="s2">=</span><span class="s1">elemnt</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">();</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;el elemento no existe&quot;</span><span class="s2">,</span><span class="s1">bool</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;ele elemento existe&quot;</span><span class="s2">);</span>
+
+
+    <span class="s2">}</span>
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">validarIncrementoCarrito</span><span class="s2">() {</span>
+<span class="s3">// Abrir la página de la aplicación</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir el nombre de usuario</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Escribir la contraseña</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Hacer clic en el botón de login</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;add-to-cart-sauce-labs-bolt-t-shirt&quot;</span><span class="s2">));</span>
+        <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
+        <span class="s3">// Esperar un momento para que se actualice el carrito</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Validar que en el icono del carrito se ha agregado el valor 1</span>
+            <span class="s1">cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+
+
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">NoSuchElementException  e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">}</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;no se ha agregado&quot;</span><span class="s2">, </span><span class="s4">1</span><span class="s2">, </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Se ha agregado correctamente el producto al carrito con el valor 1.&quot;</span><span class="s2">);</span>
+
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">validarVisibilidadBotonEliminar</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Iniciar sesión</span>
+        <span class="s1">WebElement usernameInput4 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput4</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput5 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput5</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton6 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton6</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Agregar al carrito el producto Sauce Labs Onesie</span>
+        <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;add-to-cart-sauce-labs-onesie&quot;</span><span class="s2">));</span>
+
+        <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s0">try </span><span class="s2">{</span>
+
+            <span class="s3">// Validar que el botón de eliminar producto del carrito está visible</span>
+            <span class="s1">WebElement removeButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;remove-sauce-labs-backpack&quot;</span><span class="s2">));</span>
+
+            <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">removeButton</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">());</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El botón de eliminar producto del carrito está visible.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">} </span><span class="s0">finally </span><span class="s2">{</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+
+<span class="s3">//no funciona</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">validariconEnEliminar</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Iniciar sesión</span>
+        <span class="s1">WebElement usernameInput4 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput4</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput5 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput5</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton6 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton6</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Agregar al carrito el producto Sauce Labs Onesie</span>
+        <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;add-to-cart-sauce-labs-bolt-t-shirt&quot;</span><span class="s2">));</span>
+
+        <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s3">// Validar que el botón de eliminar producto del carrito está visible</span>
+        <span class="s1">WebElement removeButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[@id='remove-sauce-labs-bolt-t-shirt']&quot;</span><span class="s2">));</span>
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">WebElement  cartIcon1</span><span class="s2">=</span><span class="s0">null</span><span class="s2">;</span>
+
+            <span class="s3">// Validar que en el icono del carrito se ha agregado el valor 1</span>
+        <span class="s1">cartIcon1 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot; n esta visible pues se ha eliminado&quot;</span><span class="s2">,</span><span class="s1">cartIcon1</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;el elemento  no se ha eliminado&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">eliminarProductoCarrito</span><span class="s2">() {</span>
+
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Iniciar sesión</span>
+        <span class="s1">WebElement usernameInput7 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput7</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput8 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput8</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton9 </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton9</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Agregar al carrito el producto Sauce Labs Onesie</span>
+        <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;add-to-cart-sauce-labs-bolt-t-shirt&quot;</span><span class="s2">));</span>
+        <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s3">// Eliminar el producto del carrito</span>
+        <span class="s1">WebElement removeButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;remove-sauce-labs-bolt-t-shirt&quot;</span><span class="s2">));</span>
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s0">try </span><span class="s2">{</span>
+
+
+            <span class="s3">// Validar que en el icono del carrito se ha eliminado el producto</span>
+            <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_container&quot;</span><span class="s2">));</span>
+            <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;&quot;</span><span class="s2">, </span><span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()); </span><span class="s3">// El icono del carrito estará vacío si no hay productos</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El producto se ha eliminado correctamente del carrito.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">agregarTresProductosAlCarrito</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Paso 1: Ir a la página de inicio</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Paso 2: Ingresar el nombre de usuario</span>
+            <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+            <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Paso 3: Ingresar la contraseña</span>
+            <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+            <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Paso 4: Hacer clic en el botón de inicio de sesión</span>
+            <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+            <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+            <span class="s3">// Paso 5: Agregar 3 productos al azar al carrito</span>
+            <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">3</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s3">// Paso 5.1: Obtener la lista de todos los botones &quot;Add to Cart&quot;</span>
+                <span class="s3">//(By.xpath(&quot;.//button[contains(@id,'add-to-cart')]&quot;));</span>
+                <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">addToCartButtons </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_primary') and contains(@class, 'btn_inventory')]&quot;</span><span class="s2">));</span>
+
+                <span class="s3">// Paso 5.2: Elegir un producto al azar y hacer clic en su botón &quot;Add to Cart&quot;</span>
+                <span class="s3">//el index es de 0 a 8 prk la lista tiene 9 elementos , pero addToCartButtons.size() es exclusivo</span>
+                <span class="s0">int </span><span class="s1">randomIndex </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+                <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">randomIndex</span><span class="s2">);</span>
+                <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+                
+
+            <span class="s2">}</span>
+
+            <span class="s3">// Paso 6: Validar que en el icono del carrito se han agregado los 3 productos</span>
+            <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+            <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;3&quot;</span><span class="s2">, </span><span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">());</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Se han agregado correctamente los 3 productos al carrito.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s3">// Manejo de excepciones</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">ordenarInventario</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Ir a la página de inicio</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Iniciar sesión</span>
+            <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+            <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+            <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+            <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+            <span class="s3">// Seleccionar el filtro &quot;Name (Z to A)&quot;</span>
+            <span class="s1">Select select </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Select</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;product_sort_container&quot;</span><span class="s2">)));</span>
+            <span class="s1">select</span><span class="s2">.</span><span class="s1">selectByVisibleText</span><span class="s2">(</span><span class="s5">&quot;Name (Z to A)&quot;</span><span class="s2">);</span>
+
+
+            <span class="s3">// Obtener los nombres de los productos ordenados</span>
+            <span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">productElements </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;inventory_item_name&quot;</span><span class="s2">));</span>
+            <span class="s1">String</span><span class="s2">[] </span><span class="s1">productNames </span><span class="s2">= </span><span class="s0">new </span><span class="s1">String</span><span class="s2">[</span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">()];</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">productNames</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">getText</span><span class="s2">();</span>
+            <span class="s2">}</span>
+            <span class="s0">int </span><span class="s1">n </span><span class="s2">= </span><span class="s1">productNames</span><span class="s2">.</span><span class="s1">length</span><span class="s2">;</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">1</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">n</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+
+                <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">((</span><span class="s1">productNames</span><span class="s2">[</span><span class="s1">i </span><span class="s2">- </span><span class="s4">1</span><span class="s2">].</span><span class="s1">compareTo</span><span class="s2">(</span><span class="s1">productNames</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]) &lt;= </span><span class="s4">0</span><span class="s2">));</span>
+            <span class="s2">}</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El inventario se ha ordenado correctamente de Z a A.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">} </span><span class="s0">finally </span><span class="s2">{</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">ordenarInventarioPorPrecio</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Ir a la página de inicio</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Iniciar sesión</span>
+            <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+            <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+            <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+            <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+            <span class="s3">// Seleccionar el filtro &quot;Price (low to high)&quot;</span>
+            <span class="s1">Select select </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Select</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;product_sort_container&quot;</span><span class="s2">)));</span>
+            <span class="s1">select</span><span class="s2">.</span><span class="s1">selectByVisibleText</span><span class="s2">(</span><span class="s5">&quot;Price (low to high)&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Obtener los precios de los productos ordenados</span>
+            <span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">productElements </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;inventory_item_price&quot;</span><span class="s2">));</span>
+            <span class="s1">String</span><span class="s2">[] </span><span class="s1">productPrices </span><span class="s2">= </span><span class="s0">new </span><span class="s1">String</span><span class="s2">[</span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">()];</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">productPrices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">replace</span><span class="s2">(</span><span class="s5">&quot;$&quot;</span><span class="s2">, </span><span class="s5">&quot;&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Convertir los precios a números decimales</span>
+            <span class="s0">double</span><span class="s2">[] </span><span class="s1">prices </span><span class="s2">= </span><span class="s0">new double</span><span class="s2">[</span><span class="s1">productPrices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">];</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">productPrices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">prices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">productPrices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Validar que los precios de los productos estén ordenados de menor a mayor</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">1</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">prices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">prices</span><span class="s2">[</span><span class="s1">i </span><span class="s2">- </span><span class="s4">1</span><span class="s2">] &lt;= </span><span class="s1">prices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+            <span class="s2">}</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El inventario se ha ordenado correctamente de menor a mayor precio.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">} </span><span class="s0">finally </span><span class="s2">{</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">ordenarInventarioPorPrecio2</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Ir a la página de inicio</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Iniciar sesión</span>
+            <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+            <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+            <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+            <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+            <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+            <span class="s3">// Seleccionar el filtro &quot;Price (high to low)&quot;</span>
+            <span class="s1">Select select </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Select</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;product_sort_container&quot;</span><span class="s2">)));</span>
+            <span class="s1">select</span><span class="s2">.</span><span class="s1">selectByVisibleText</span><span class="s2">(</span><span class="s5">&quot;Price (high to low)&quot;</span><span class="s2">);</span>
+
+            <span class="s3">// Obtener los precios de los productos ordenados</span>
+            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">productElements </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;inventory_item_price&quot;</span><span class="s2">));</span>
+            <span class="s1">String</span><span class="s2">[] </span><span class="s1">productPrices </span><span class="s2">= </span><span class="s0">new </span><span class="s1">String</span><span class="s2">[</span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">()];</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">productPrices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s1">productElements</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">replace</span><span class="s2">(</span><span class="s5">&quot;$&quot;</span><span class="s2">, </span><span class="s5">&quot;&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Convertir los precios a números decimales</span>
+            <span class="s0">double</span><span class="s2">[] </span><span class="s1">prices </span><span class="s2">= </span><span class="s0">new double</span><span class="s2">[</span><span class="s1">productPrices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">];</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">productPrices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">prices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">productPrices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Validar que los precios de los productos estén ordenados de mayor a menor</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">1</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">prices</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">prices</span><span class="s2">[</span><span class="s1">i </span><span class="s2">- </span><span class="s4">1</span><span class="s2">] &gt;= </span><span class="s1">prices</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+            <span class="s2">}</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;El inventario se ha ordenado correctamente de mayor a menor precio.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Error durante la ejecución del caso de prueba: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">} </span><span class="s0">finally </span><span class="s2">{</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+
+    <span class="s1">@Test</span>
+
+    <span class="s0">public void </span><span class="s1">carrito</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Iniciar sesión</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">2</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s3">// Paso 5.1: Obtener la lista de todos los botones &quot;Add to Cart&quot;</span>
+            <span class="s3">//(By.xpath(&quot;.//button[contains(@id,'add-to-cart')]&quot;));</span>
+            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">addToCartButtons </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_primary') and contains(@class, 'btn_inventory')]&quot;</span><span class="s2">));</span>
+
+            <span class="s3">// Paso 5.2: Elegir un producto al azar y hacer clic en su botón &quot;Add to Cart&quot;</span>
+            <span class="s3">//el index es de 0 a 8 prk la lista tiene 9 elementos , pero addToCartButtons.size() es exclusivo</span>
+            <span class="s0">int </span><span class="s1">randomIndex </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+            <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">randomIndex</span><span class="s2">);</span>
+            <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s2">}</span>
+
+        <span class="s1">WebElement carr</span><span class="s2">=</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//a[@class='shopping_cart_link']&quot;</span><span class="s2">));</span>
+       <span class="s1">carr</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+       <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">remove</span><span class="s2">=</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class,'btn btn_secondary) and contains( @class,cart_button')]&quot;</span><span class="s2">));</span>
+         <span class="s0">int </span><span class="s1">j1</span><span class="s2">=</span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">remove</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+            <span class="s1">WebElement w1</span><span class="s2">=</span><span class="s1">remove</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">j1</span><span class="s2">);</span>
+            <span class="s1">w1</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt;  </span><span class="s1">elementosCaritto</span><span class="s2">=</span><span class="s0">null</span><span class="s2">;</span>
+            <span class="s0">try</span><span class="s2">{</span>
+
+                 <span class="s1">elementosCaritto</span><span class="s2">=</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[@class='cart_item']&quot;</span><span class="s2">));</span>
+
+            <span class="s2">}</span><span class="s0">catch </span><span class="s2">(</span><span class="s1">NoSuchElementException e</span><span class="s2">){ </span><span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;element not found&quot;</span><span class="s2">+</span><span class="s1">e</span><span class="s2">);}</span>
+
+         <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;aun no se ha eliminado&quot;</span><span class="s2">,</span><span class="s4">1</span><span class="s2">,</span><span class="s1">elementosCaritto</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">eliminarProductoCarrit</span><span class="s2">() {</span>
+      <span class="s3">// Paso 1: Ir a la página https://www.saucedemo.com</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Paso 2: Escribir el username standard_user y password secret_sauce y pulsar en el botón del Login</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Paso 3: Agregar al carrito 2 productos elegidos al azar</span>
+        <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">2</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s3">// Paso 5.1: Obtener la lista de todos los botones &quot;Add to Cart&quot;</span>
+            <span class="s3">//(By.xpath(&quot;.//button[contains(@id,'add-to-cart')]&quot;));</span>
+            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">addToCartButtons </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_primary') and contains(@class, 'btn_inventory')]&quot;</span><span class="s2">));</span>
+
+            <span class="s3">// Paso 5.2: Elegir un producto al azar y hacer clic en su botón &quot;Add to Cart&quot;</span>
+            <span class="s3">//el index es de 0 a 8 prk la lista tiene 9 elementos , pero addToCartButtons.size() es exclusivo</span>
+            <span class="s0">int </span><span class="s1">randomIndex </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+            <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">randomIndex</span><span class="s2">);</span>
+            <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s2">}</span>
+
+        <span class="s3">// Paso 4: Ir al carrito</span>
+        <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+        <span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Paso 5: Eliminar uno de los productos</span>
+
+
+        <span class="s1">List </span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">removeButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_secondary') and contains(@class, 'cart_button')]&quot;</span><span class="s2">));</span>
+
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">0</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">cartItems </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;cart_item&quot;</span><span class="s2">));</span>
+        <span class="s3">// Paso 6: Obtener el número de elementos en el carrito y verificar si es igual a 1</span>
+         <span class="s0">int </span><span class="s1">numberOfItems </span><span class="s2">= </span><span class="s1">cartItems</span><span class="s2">.</span><span class="s1">size</span><span class="s2">();</span>
+
+<span class="s3">// Usar assertEquals para verificar si el número de elementos es igual a 1</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;La prueba ha fallado: se esperaba 1 elemento en el carrito.&quot;</span><span class="s2">, </span><span class="s4">1</span><span class="s2">, </span><span class="s1">numberOfItems</span><span class="s2">);</span>
+         <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;prueba exotosa, 1 elemento en el carrito&quot;</span><span class="s2">);</span>
+        <span class="s3">// Paso 7: Assert para verificar que el producto eliminado no está en el carrito</span>
+
+        <span class="s3">// Cerrar el navegador</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+
+    <span class="s0">public void </span><span class="s1">checkout</span><span class="s2">()</span>
+    <span class="s2">{</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Paso 2: Escribir el username standard_user y password secret_sauce y pulsar en el botón del Login</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+
+        <span class="s3">// Paso 5: Agregar 3 productos al azar al carrito</span>
+        <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">3</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s3">// Paso 5.1: Obtener la lista de todos los botones &quot;Add to Cart&quot;</span>
+            <span class="s3">//(By.xpath(&quot;.//button[contains(@id,'add-to-cart')]&quot;));</span>
+            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">addToCartButtons </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_primary') and contains(@class, 'btn_inventory')]&quot;</span><span class="s2">));</span>
+
+            <span class="s3">// Paso 5.2: Elegir un producto al azar y hacer clic en su botón &quot;Add to Cart&quot;</span>
+            <span class="s3">//el index es de 0 a 8 prk la lista tiene 9 elementos , pero addToCartButtons.size() es exclusivo</span>
+            <span class="s0">int </span><span class="s1">randomIndex </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+            <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">randomIndex</span><span class="s2">);</span>
+            <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s2">}</span>
+
+        <span class="s3">// Paso 4: Ir al carrito</span>
+        <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+        <span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s3">//checkout   class=&quot;btn btn_action btn_medium checkout_button &quot;</span>
+
+        <span class="s1">WebElement checkout </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[@class='btn btn_action btn_medium checkout_button ']&quot;</span><span class="s2">));</span>
+        <span class="s1">checkout</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">//rellenar los campos</span>
+
+        <span class="s1">WebElement Firstname </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;first-name&quot;</span><span class="s2">));</span>
+        <span class="s1">Firstname</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement LastName </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;last-name&quot;</span><span class="s2">));</span>
+        <span class="s1">LastName</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement zip</span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;postal-code&quot;</span><span class="s2">));</span>
+        <span class="s1">zip</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement continu </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;continue&quot;</span><span class="s2">));</span>
+        <span class="s1">continu</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+     <span class="s3">//probar la suma</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">priceElements </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;inventory_item_price&quot;</span><span class="s2">));</span>
+        <span class="s0">double </span><span class="s1">totalPriceInCart </span><span class="s2">= </span><span class="s4">0.0</span><span class="s2">;</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">WebElement priceElement </span><span class="s2">: </span><span class="s1">priceElements</span><span class="s2">) {</span>
+            <span class="s1">String priceText </span><span class="s2">= </span><span class="s1">priceElement</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">replace</span><span class="s2">(</span><span class="s5">&quot;$&quot;</span><span class="s2">, </span><span class="s5">&quot;&quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">price </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">priceText</span><span class="s2">);</span>
+            <span class="s1">totalPriceInCart </span><span class="s2">+= </span><span class="s1">price</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+
+        <span class="s3">// Paso adicional: Obtener el valor del impuesto</span>
+        <span class="s1">WebElement taxElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[@class='summary_tax_label']&quot;</span><span class="s2">));</span>
+        <span class="s1">String taxText </span><span class="s2">= </span><span class="s1">taxElement</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">replace</span><span class="s2">(</span><span class="s5">&quot;Tax: $&quot;</span><span class="s2">, </span><span class="s5">&quot;&quot;</span><span class="s2">);</span>
+        <span class="s0">double </span><span class="s1">tax </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">taxText</span><span class="s2">);</span>
+
+        <span class="s3">// Calcular el precio total con impuestos</span>
+        <span class="s0">double </span><span class="s1">totalPriceWithTax </span><span class="s2">= </span><span class="s1">totalPriceInCart </span><span class="s2">+ </span><span class="s1">tax</span><span class="s2">;</span>
+
+
+
+        <span class="s3">// comparar</span>
+        <span class="s1">WebElement precioTotal </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[@class='summary_info_label summary_total_label']&quot;</span><span class="s2">));</span>
+        <span class="s1">String totalText </span><span class="s2">= </span><span class="s1">taxElement</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">replace</span><span class="s2">(</span><span class="s5">&quot;Total: $&quot;</span><span class="s2">, </span><span class="s5">&quot;&quot;</span><span class="s2">);</span>
+        <span class="s0">double </span><span class="s1">totalValu </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">taxText</span><span class="s2">);</span>
+
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;los valores no son similarios&quot;</span><span class="s2">, </span><span class="s1">totalPriceWithTax</span><span class="s2">, </span><span class="s1">totalValu</span><span class="s2">, </span><span class="s4">0.01</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;prueba exitosa&quot;</span><span class="s2">);</span>
+
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">realizarPedido</span><span class="s2">()</span>
+    <span class="s2">{</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">&quot;https://www.saucedemo.com&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// Paso 2: Escribir el username standard_user y password secret_sauce y pulsar en el botón del Login</span>
+        <span class="s1">WebElement usernameInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;user-name&quot;</span><span class="s2">));</span>
+        <span class="s1">usernameInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement passwordInput </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;password&quot;</span><span class="s2">));</span>
+        <span class="s1">passwordInput</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement loginButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;login-button&quot;</span><span class="s2">));</span>
+        <span class="s1">loginButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+            <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+
+            <span class="s3">// Paso 5.1: Obtener la lista de todos los botones &quot;Add to Cart&quot;</span>
+            <span class="s3">//(By.xpath(&quot;.//button[contains(@id,'add-to-cart')]&quot;));</span>
+            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">WebElement</span><span class="s2">&gt; </span><span class="s1">addToCartButtons </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElements</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[contains(@class, 'btn_primary') and contains(@class, 'btn_inventory')]&quot;</span><span class="s2">));</span>
+
+            <span class="s3">// Paso 5.2: Elegir un producto al azar y hacer clic en su botón &quot;Add to Cart&quot;</span>
+            <span class="s3">//el index es de 0 a 8 prk la lista tiene 9 elementos , pero addToCartButtons.size() es exclusivo</span>
+            <span class="s0">int </span><span class="s1">randomIndex </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+            <span class="s1">WebElement addToCartButton </span><span class="s2">= </span><span class="s1">addToCartButtons</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">randomIndex</span><span class="s2">);</span>
+            <span class="s1">addToCartButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">// Paso 4: Ir al carrito</span>
+        <span class="s1">WebElement cartIcon </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s5">&quot;shopping_cart_badge&quot;</span><span class="s2">));</span>
+        <span class="s1">cartIcon</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">//checkout   class=&quot;btn btn_action btn_medium checkout_button &quot;</span>
+
+        <span class="s1">WebElement checkout </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[@class='btn btn_action btn_medium checkout_button ']&quot;</span><span class="s2">));</span>
+        <span class="s1">checkout</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+
+        <span class="s3">//rellenar los campos</span>
+
+        <span class="s1">WebElement Firstname </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;first-name&quot;</span><span class="s2">));</span>
+        <span class="s1">Firstname</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;standard_user&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement LastName </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;last-name&quot;</span><span class="s2">));</span>
+        <span class="s1">LastName</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement zip</span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;postal-code&quot;</span><span class="s2">));</span>
+        <span class="s1">zip</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s5">&quot;secret_sauce&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement continu </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s5">&quot;continue&quot;</span><span class="s2">));</span>
+        <span class="s1">continu</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">//finish</span>
+        <span class="s3">//checkout   class=&quot;btn btn_action btn_medium checkout_button &quot;</span>
+
+        <span class="s1">WebElement finish </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//button[@class='btn btn_action btn_medium cart_button']&quot;</span><span class="s2">));</span>
+        <span class="s1">finish</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s3">//&quot;//div[text()='Your order has been dispatched, and will arrive just as fast as the pony can get there!']&quot;</span>
+        <span class="s1">WebElement terminer</span><span class="s2">=</span><span class="s0">null</span><span class="s2">;</span>
+        <span class="s0">try </span><span class="s2">{</span>
+      <span class="s1">terminer </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s5">&quot;//div[text()='Your order has been dispatched, and will arrive just as fast as the pony can get there!']&quot;</span><span class="s2">));</span>
+    <span class="s1">terminer</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+       <span class="s2">}</span><span class="s0">catch</span><span class="s2">(</span><span class="s1">NoSuchElementException E</span><span class="s2">)</span>
+        <span class="s2">{</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">err</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">E</span><span class="s2">);</span>
+         <span class="s2">}</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;the message is not displauyed&quot;</span><span class="s2">,</span><span class="s1">terminer</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">());</span>
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">loginIncorrectTest</span><span class="s2">() {</span>
+
+
+    <span class="s2">}</span>
+
+    <span class="s1">@After</span>
+    <span class="s0">public void </span><span class="s1">tearDown</span><span class="s2">() {</span>
+        <span class="s3">// driver.close();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
